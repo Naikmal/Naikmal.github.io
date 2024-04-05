@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="all.css"> -->
+
+    <!-- LINK TO SWIPER.COM CSS FILE START -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
+    
+<style>
+
+    /* Styles for header section start */
+    .header{
+        position: relative;
+    }
+    .show{
+        display: block;
+        position: absolute;
+        top: 50px;
+        left: auto;
+        text-align: center;
+        background-color: lightblue;
+       width: 100%;
+    }
+    .show a{
+        display: block;
+       /*  border: 2px solid red; */
+        font-size: 1.4em;
+        margin-bottom: 12px;
+    }
+    .show .d-block{
+        display: block;
+        /* border: 2px solid black; */
+        float: none;
+    }
+     /* Styles for header section end */
+</style>
+</head>
+
+<body class="light-mode">
+    <!-- header section start -->
+<div class="header " >
+    <header>
+        <a><h2>National Library</h2></a>
+    </header>
+    <div class="links "><!--  show d-block
+        d-block-->
+        <div class= "  navigation">
+            <a >Books</a>
+            <a>Articles</a>
+        </div>
+        <div class="login-register ">
+            <a >Login</a>
+            <a>Register</a>
+            
+        </div>
+    </div>
+    <div class="buttons" >
+        <img class="show-menu" src="bars-solid.svg" alt="">
+        <img class="hide-menu" src="xmark-solid.svg" alt="">
+    </div>
+    
+</div>
+    <!-- header section end -->
+
+  
+
+
+
+
+
+<div class="swiper mySwiper">
+
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="homePage-slider-images/1.jpg" alt="" style="width: 100%;/*  height: 550px;  */" ></div>
+      <div class="swiper-slide"><img src="homePage-slider-images/2.jpg" alt="" style="width: 100%;  /* height: 550px; */ "></div>
+       <div class="swiper-slide"><img src="homePage-slider-images/3.jpg" alt="" style="width: 100%;   /*  height: 550px */; "></div> 
+     
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+
+   
+
+
+
+    <!-- SEARCH BOX SECTION  START-->
+    <div class="search-container">
+        <div class="search-box">
+            <form action="search_books.php" class="search-form" method="post">
+                <input type="search" name="search" placeholder="Search book name or author">
+                 <input type="submit" name="search-submit" id="search-submit" value="Search">  
+            </form>
+        </div>
+    </div>
+
+    <!-- SEARCH BOX SECTION  END-->
+
+</div>
+
+<section class="content-container" >
+
+     
+        
+    <!--  BOOK CATEGORIES SECTION START -->
+
+    <section class="category-container">
+        <h2>Book Categories</h2>
+        <div class="category-cards">
+            
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+
+            <div class="category-box">
+                <a href=""> <img src=" ?>" alt=""></a> 
+                <h3><a href="">Book Category Title</a></h3>
+            </div>
+            
+        </div>
+        <button id="category-loadmore-btn">Load More</button>
+    </section>   
+
+    <!-- BOOK CATEGORIES SECTION   END-->
+    
+    <!-- ARTICLES CATEGORIES IN ASIDE SECTION START -->
+    <aside class="aside-card-container">
+
+        <h2>Articles Categories</h2>
+        <div class="aside-card">
+
+            <div class="aside-content">
+                <a href=""><h4> Article Category Goes here </h4></a>
+            </div>
+
+            <div class="aside-content">
+                <a href=""><h4> Article Category Goes here </h4></a>
+            </div>
+
+            <div class="aside-content">
+                <a href=""><h4> Article Category Goes here  Article Category Goes here  Article Category Goes here </h4></a>
+            </div>
+
+            <div class="aside-content">
+                <a href=""><h4> Article Category Goes here </h4></a>
+            </div>
+
+        </div>
+       
+       
+    </aside>
+
+
+    <!-- ARTICLES  CATEGORIES IN ASIDE SECTION END -->
+
+    
+
+</section>    
+
+
+<!-- SECTION FOR RECENTLY ADDED BOOKS START -->
+<section class="recently-added-books">
+    <h3>Recently added books</h3>
+    <div class="books-container">
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div> 
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div> 
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+
+        <div class="recently-added-books-box">
+            <a href=""><img src="" alt=""></a> 
+            <a href=""><p> Book Title </p></a> 
+        </div>
+                    
+            
+    </div>
+    <button id="load-more-books">Load More</button>
+</section>
+
+<!-- SECTION FOR RECENTLY ADDED BOOKS END -->
+
+
+<!-- CONTENT SECTION START -->
+
+
+
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="about-us">
+            <h4 class="f-heading">About Us</h4>
+            <p>National Library is a comprehensive digital library that offers a wide range of free and premium ebooks. Our extensive database comprises books, magazines, and other digital documents, giving you access to thousands of literary works.</p>
+            
+            <p>Our platform is designed to enable seamless navigation, search, and discovery of books. You can easily browse our collection by categories, read online, or opt to have the books printed or downloaded onto your device. Our user-friendly interface ensures a hassle-free experience for our patrons.</p>
+            <hr>
+        </div>
+
+        
+        <div class="user-accounts mrg-left" >
+            <h4 class="f-heading">User Accounts</h4>
+            
+            <a href="adminDashboard/index.php">Dashboard</a>
+            <a href="login.php">Login</a>
+            <a href="register.php">Register</a>
+        </div>
+        <div class="quick-links mrg-left" >
+            <h4 class="f-heading">Quick Links</h4>
+            <a >Home</a>
+            <a >Books</a>
+            <a >Articles</a>
+            
+
+        </div>
+        
+    </div>
+    <p>&copy; 2024 NationaLibrary.com</p>
+</footer>
+<!-- LINK TO SWIPER.COM JS STRAT -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<!-- LINK TO SWIPER.COM JS END -->
+<script src="main2.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .header{
+            position: relative;
+        }
+        .show{
+            display: block;
+            position: absolute;
+            top: 50px;
+            left: auto;
+            text-align: center;
+            background-color: lightblue;
+           width: 100%;
+        }
+        .show a{
+            display: block;
+           /*  border: 2px solid red; */
+            font-size: 1.4em;
+            margin-bottom: 12px;
+        }
+        .show .d-block{
+            display: block;
+            /* border: 2px solid black; */
+            float: none;
+        }
+    </style>
+</head>
+<body>
+        
+<div class="header " >
+        <header>
+        <a><h2>National Library</h2></a>
+    </header>
+    <div class="links "><!--  show d-block
+        d-block-->
+        <div class= "  navigation">
+            <a >Books</a>
+            <a>Articles</a>
+        </div>
+        <div class="login-register ">
+            <a >Login</a>
+            <a>Register</a>
+            
+        </div>
+    </div>
+    <div class="buttons" >
+        <img class="show-menu" src="bars-solid.svg" alt="">
+        <img class="hide-menu" src="xmark-solid.svg" alt="">
+    </div>
+    
+</div>
+
+
+<!-- ///////////////////////////////////////////////////////////// -->
+
+
+<section class="book-page">
+    <div class="book-details-container">
+
+        
+    
+        <div class="book-image">
+            <img src="homePage-slider-images/1.jpg" alt="">
+        </div>
+        <div class="book-description">
+            <h2>Book Title </h2>
+            <p> Book Author </p>
+            
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam beatae consectetur doloribus dignissimos enim, pariatur corrupti nesciunt, optio quasi repellat animi autem incidunt deleniti harum aspernatur, quibusdam ipsum? Maxime, sed. </p>
+            
+            <table >
+                <tr>
+                    <td>views:</td>
+                    <td> 1200 </td>
+                </tr>
+
+                <tr>
+                    <td>Price:</td>
+                    <td>Free </td>
+                </tr>
+
+                <tr>
+                    <td>Language:</td>
+                    <td> Pashto </td>
+                </tr>
+
+                <tr>
+                    <td>category:</td>
+                    <td>Islamic </td>
+                </tr>
+
+                <tr>
+                    <td>file type:</td>
+                    <td> PDF </td>
+                </tr>
+
+            </table>
+            <div class="read-or-download">
+                <button>Download</button>
+                <button>Read</button>
+            </div>
+        </div>
+        
+        
+    </div> 
+    <!--   BOOK DETAILS SECTION END -->
+
+    <!-- RELATED BOOKS SECTION  START-->
+
+    <div class="related-books">
+        <h2>Relatd Books</h2>
+        <div class="book-container">
+
+            <div class="book-box">
+                <div class="book-image">
+                    <a href=""><img src="homePage-slider-images/2.jpg" alt=""></a> 
+                </div> 
+                
+                <div class="views-date-date-added">
+                    <a href=""> Book Title</a> 
+                    <p>Book Author</p>
+                    <small><i class="fa-solid fa-eye"></i> 1230 </small>
+                        
+                    <small><i class="fa-regular fa-clock"></i>20 Days ago</small>
+                </div>
+            </div>
+    
+            
+
+            
+            
+        </div>
+    </div>
+
+
+
+     <!-- RELATED BOOKS SECTION  END-->
+</section>
+
+
+
+<script src="main.js"></script>
+
+
+</body>
+</html>
+
+
+
+
+
+<!-- ///////////////////////////////////////////////////////////// -->
+
+
+
+<!-- FOOTER SECTION -->
+
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="about-us">
+            <h4 class="f-heading">About Us</h4>
+            <p>National Library is a comprehensive digital library that offers a wide range of free and premium ebooks. Our extensive database comprises books, magazines, and other digital documents, giving you access to thousands of literary works.</p>
+            
+            <p>Our platform is designed to enable seamless navigation, search, and discovery of books. You can easily browse our collection by categories, read online, or opt to have the books printed or downloaded onto your device. Our user-friendly interface ensures a hassle-free experience for our patrons.</p>
+            <hr>
+        </div>
+
+        
+        <div class="user-accounts mrg-left" >
+            <h4 class="f-heading">User Accounts</h4>
+            
+            <a href="adminDashboard/index.php">Dashboard</a>
+            <a href="login.php">Login</a>
+            <a href="register.php">Register</a>
+        </div>
+        <div class="quick-links mrg-left" >
+            <h4 class="f-heading">Quick Links</h4>
+            <a >Home</a>
+            <a >Books</a>
+            <a >Articles</a>
+            
+
+        </div>
+        
+    </div>
+    <p>&copy; 2024 NationaLibrary.com</p>
+</footer>
+<script src="header.js"></script>
+
+
+    
+</body>
+</html>
