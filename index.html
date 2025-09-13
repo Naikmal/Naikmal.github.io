@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>National Library - Digital Knowledge Hub</title>
+    <title>Najibullah Naikmal - Full Stack Developer & Digital Solutions Expert</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -450,6 +450,7 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             position: relative;
+            text-align: center;
         }
 
         .search-section::before {
@@ -465,11 +466,33 @@
         }
 
         .search-container {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
             z-index: 2;
+        }
+
+        .search-content {
+            margin-bottom: 3rem;
+        }
+
+        .search-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .search-content p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            opacity: 0.9;
+            margin-bottom: 2rem;
         }
 
         .search-box {
@@ -500,7 +523,7 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), var(--shadow-glow);
         }
 
-        .search-box input[type="search"] {
+        .search-box input[type="text"] {
             flex: 1;
             padding: 1.5rem 2rem;
             border: none;
@@ -511,7 +534,7 @@
             font-weight: 500;
         }
 
-        .search-box input[type="search"]::placeholder {
+        .search-box input[type="text"]::placeholder {
             color: var(--text-secondary);
             opacity: 0.8;
         }
@@ -1024,6 +1047,41 @@
             box-shadow: var(--shadow-xl);
         }
 
+        /* Contact Links */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-smooth);
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .contact-link span {
+            font-size: 1.2rem;
+        }
+
         /* Footer */
         .footer {
             background: var(--text-primary);
@@ -1367,7 +1425,7 @@
                 border-radius: 20px;
             }
 
-            .search-box input[type="search"] {
+            .search-box input[type="text"] {
                 border-radius: 20px 20px 0 0;
             }
 
@@ -1383,6 +1441,18 @@
             .newsletter-form input,
             .newsletter-form button {
                 width: 100%;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .contact-link {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
             }
 
             .categories-grid,
@@ -1501,16 +1571,17 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav-container">
-            <a href="#" class="logo">📚 National Library</a>
+            <a href="#" class="logo">💻 Naikmal</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#books">Books</a></li>
-                <li><a href="#articles">Articles</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="auth-buttons">
-                <a href="#" class="btn btn-outline">Login</a>
-                <a href="#" class="btn btn-primary">Register</a>
+                <a href="#contact" class="btn btn-outline">Hire Me</a>
+                <a href="https://github.com/Naikmal" target="_blank" class="btn btn-primary">GitHub</a>
             </div>
             <div class="mobile-toggle">
                 <span></span>
@@ -1534,11 +1605,11 @@
             <div class="particle" style="left: 90%; width: 21px; height: 21px; animation-delay: 16s;"></div>
         </div>
         <div class="hero-content">
-            <h1>Discover Knowledge</h1>
-            <p>Access thousands of books, articles, and digital resources from our comprehensive digital library</p>
+            <h1>Full Stack Developer</h1>
+            <p>Creating innovative digital solutions with modern technologies. Specializing in web development, mobile apps, and cutting-edge software solutions.</p>
             <div class="hero-buttons">
-                <a href="#" class="btn btn-primary btn-hero">Explore Books</a>
-                <a href="#" class="btn btn-outline btn-hero">Learn More</a>
+                <a href="#projects" class="btn btn-primary btn-hero">View My Work</a>
+                <a href="#contact" class="btn btn-outline btn-hero">Get In Touch</a>
             </div>
         </div>
     </section>
@@ -1546,10 +1617,14 @@
     <!-- Search Section -->
     <section class="search-section">
         <div class="search-container">
-            <form class="search-box" action="search_books.php" method="post">
-                <input type="search" name="search" placeholder="Search for books, authors, or topics...">
-                <button type="submit"><i class="fas fa-search"></i></button>
-            </form>
+            <div class="search-content">
+                <h2>Let's Build Something Amazing Together</h2>
+                <p>I'm always excited to work on new projects and collaborate with innovative teams.</p>
+                <form class="search-box" action="#contact" method="get">
+                    <input type="text" name="project" placeholder="Describe your project idea...">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -1558,122 +1633,122 @@
         <div class="stats-container">
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">50K+</div>
-                    <div class="stat-label">Books Available</div>
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Years Experience</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">1M+</div>
-                    <div class="stat-label">Happy Readers</div>
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Projects Completed</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">New Articles</div>
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Happy Clients</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">24/7</div>
-                    <div class="stat-label">Online Access</div>
+                    <div class="stat-label">Support Available</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Categories Section -->
-    <section class="categories-section scroll-reveal" id="books">
+    <!-- Skills Section -->
+    <section class="categories-section scroll-reveal" id="skills">
         <div class="section-container">
             <div class="section-title">
-                <h2>Explore Categories</h2>
-                <p>Discover books across various genres and subjects</p>
+                <h2>My Expertise</h2>
+                <p>Technologies and skills I use to bring ideas to life</p>
             </div>
             <div class="categories-grid">
                 <div class="category-card">
-                    <div class="category-icon">📚</div>
-                    <h3>Literature</h3>
-                    <p>Classic and contemporary literature from around the world</p>
-                    <a href="#">Explore →</a>
+                    <div class="category-icon">⚛️</div>
+                    <h3>Frontend Development</h3>
+                    <p>React, Vue.js, Angular, HTML5, CSS3, JavaScript, TypeScript</p>
+                    <a href="#projects">View Projects →</a>
                 </div>
                 <div class="category-card">
-                    <div class="category-icon">🔬</div>
-                    <h3>Science</h3>
-                    <p>Latest research and discoveries in various scientific fields</p>
-                    <a href="#">Explore →</a>
+                    <div class="category-icon">⚙️</div>
+                    <h3>Backend Development</h3>
+                    <p>Node.js, Python, PHP, Express.js, Django, REST APIs</p>
+                    <a href="#projects">View Projects →</a>
                 </div>
                 <div class="category-card">
-                    <div class="category-icon">💻</div>
-                    <h3>Technology</h3>
-                    <p>Programming, AI, and cutting-edge technology resources</p>
-                    <a href="#">Explore →</a>
+                    <div class="category-icon">📱</div>
+                    <h3>Mobile Development</h3>
+                    <p>React Native, Flutter, iOS, Android, Cross-platform apps</p>
+                    <a href="#projects">View Projects →</a>
                 </div>
                 <div class="category-card">
-                    <div class="category-icon">🏛️</div>
-                    <h3>History</h3>
-                    <p>Historical documents and accounts from different eras</p>
-                    <a href="#">Explore →</a>
+                    <div class="category-icon">🗄️</div>
+                    <h3>Database & Cloud</h3>
+                    <p>MongoDB, MySQL, PostgreSQL, AWS, Firebase, Docker</p>
+                    <a href="#projects">View Projects →</a>
                 </div>
                 <div class="category-card">
                     <div class="category-icon">🎨</div>
-                    <h3>Arts</h3>
-                    <p>Visual arts, music, and creative expression resources</p>
-                    <a href="#">Explore →</a>
+                    <h3>UI/UX Design</h3>
+                    <p>Figma, Adobe XD, Responsive Design, User Experience</p>
+                    <a href="#projects">View Projects →</a>
                 </div>
                 <div class="category-card">
-                    <div class="category-icon">👶</div>
-                    <h3>Children</h3>
-                    <p>Educational and entertaining books for young readers</p>
-                    <a href="#">Explore →</a>
+                    <div class="category-icon">🔧</div>
+                    <h3>DevOps & Tools</h3>
+                    <p>Git, GitHub, CI/CD, Testing, Deployment, Optimization</p>
+                    <a href="#projects">View Projects →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Books Section -->
-    <section class="featured-section scroll-reveal">
+    <!-- Featured Projects Section -->
+    <section class="featured-section scroll-reveal" id="projects">
         <div class="section-container">
             <div class="section-title">
-                <h2>Featured Books</h2>
-                <p>Handpicked selections from our vast collection</p>
+                <h2>Featured Projects</h2>
+                <p>Some of my recent work and accomplishments</p>
             </div>
             <div class="books-grid">
                 <div class="book-card">
-                    <div class="book-image">📖</div>
+                    <div class="book-image">🌐</div>
                     <div class="book-content">
-                        <div class="book-title">The Art of Programming</div>
-                        <div class="book-author">by John Doe</div>
+                        <div class="book-title">E-Commerce Platform</div>
+                        <div class="book-author">Full Stack Web Application</div>
                         <div class="book-rating">
                             <span class="stars">⭐⭐⭐⭐⭐</span>
-                            <span>4.8</span>
+                            <span>React & Node.js</span>
                         </div>
                     </div>
                 </div>
                 <div class="book-card">
-                    <div class="book-image">🌟</div>
+                    <div class="book-image">📱</div>
                     <div class="book-content">
-                        <div class="book-title">Modern Physics</div>
-                        <div class="book-author">by Jane Smith</div>
+                        <div class="book-title">Mobile Task Manager</div>
+                        <div class="book-author">Cross-Platform Mobile App</div>
                         <div class="book-rating">
                             <span class="stars">⭐⭐⭐⭐⭐</span>
-                            <span>4.9</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="book-card">
-                    <div class="book-image">📚</div>
-                    <div class="book-content">
-                        <div class="book-title">World History</div>
-                        <div class="book-author">by Robert Johnson</div>
-                        <div class="book-rating">
-                            <span class="stars">⭐⭐⭐⭐⭐</span>
-                            <span>4.7</span>
+                            <span>React Native</span>
                         </div>
                     </div>
                 </div>
                 <div class="book-card">
                     <div class="book-image">🎨</div>
                     <div class="book-content">
-                        <div class="book-title">Digital Art Guide</div>
-                        <div class="book-author">by Maria Garcia</div>
+                        <div class="book-title">Portfolio Website</div>
+                        <div class="book-author">Modern Responsive Design</div>
                         <div class="book-rating">
                             <span class="stars">⭐⭐⭐⭐⭐</span>
-                            <span>4.6</span>
+                            <span>HTML/CSS/JS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card">
+                    <div class="book-image">⚡</div>
+                    <div class="book-content">
+                        <div class="book-title">API Dashboard</div>
+                        <div class="book-author">Real-time Analytics Platform</div>
+                        <div class="book-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span>Vue.js & Python</span>
                         </div>
                     </div>
                 </div>
@@ -1681,15 +1756,23 @@
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter-section scroll-reveal">
+    <!-- Contact Section -->
+    <section class="newsletter-section scroll-reveal" id="contact">
         <div class="newsletter-content">
-            <h2>Stay Updated</h2>
-            <p>Subscribe to our newsletter for the latest book recommendations and library updates</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email">
-                <button type="submit">Subscribe</button>
+            <h2>Let's Work Together</h2>
+            <p>Ready to bring your ideas to life? I'm here to help you build amazing digital solutions.</p>
+            <form class="newsletter-form contact-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Start Project</button>
             </form>
+            <div class="contact-links">
+                <a href="mailto:naikmal@example.com" class="contact-link">
+                    <span>📧</span> naikmal@example.com
+                </a>
+                <a href="https://twitter.com/Naikmal_web_sol" target="_blank" class="contact-link">
+                    <span>🐦</span> @Naikmal_web_sol
+                </a>
+            </div>
         </div>
     </section>
 
@@ -1697,43 +1780,43 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>About National Library</h4>
-                <p>National Library is a comprehensive digital library offering access to thousands of books, articles, and digital resources for learners worldwide.</p>
+                <h4>Najibullah Naikmal</h4>
+                <p>Full Stack Developer passionate about creating innovative digital solutions. Specializing in modern web technologies and mobile app development.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Naikmal" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/Naikmal_web_sol" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/in/naikmal" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:naikmal@example.com"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
             <div class="footer-section">
-                <h4>Quick Links</h4>
-                <a href="#">Home</a>
-                <a href="#">Books</a>
-                <a href="#">Articles</a>
-                <a href="#">Categories</a>
-                <a href="#">About Us</a>
+                <h4>Services</h4>
+                <a href="#skills">Web Development</a>
+                <a href="#skills">Mobile Apps</a>
+                <a href="#skills">UI/UX Design</a>
+                <a href="#skills">API Development</a>
+                <a href="#skills">Consulting</a>
             </div>
             <div class="footer-section">
-                <h4>Account</h4>
-                <a href="#">Login</a>
-                <a href="#">Register</a>
-                <a href="#">Dashboard</a>
-                <a href="#">My Books</a>
-                <a href="#">Settings</a>
+                <h4>Portfolio</h4>
+                <a href="#projects">Recent Projects</a>
+                <a href="#skills">Skills & Technologies</a>
+                <a href="#about">About Me</a>
+                <a href="#contact">Work Together</a>
+                <a href="#contact">Get Quote</a>
             </div>
             <div class="footer-section">
-                <h4>Support</h4>
-                <a href="#">Help Center</a>
-                <a href="#">Contact Us</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">FAQ</a>
+                <h4>Contact</h4>
+                <a href="mailto:naikmal@example.com">Email Me</a>
+                <a href="#contact">Start Project</a>
+                <a href="#contact">Free Consultation</a>
+                <a href="tel:+1234567890">Phone Call</a>
+                <a href="#contact">Schedule Meeting</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 National Library. All rights reserved.</p>
-            <p>Developed by <a href="https://twitter.com/Naikmal_web_sol" style="color: #6366f1;">Najibullah Naikmal</a></p>
+            <p>&copy; 2024 Najibullah Naikmal. All rights reserved.</p>
+            <p>Crafted with ❤️ and modern web technologies</p>
         </div>
     </footer>
 
