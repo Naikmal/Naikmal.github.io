@@ -3,390 +3,538 @@
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <!-- <link rel="stylesheet" href="all.css"> -->
-
-    <!-- LINK TO SWIPER.COM CSS FILE START -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    
-    
-<style>
-
-    /* Styles for header section start */
-    .header{
-        position: relative;
+    <style>
+    /* Base resets */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
-    .show{
-        display: block;
+    body {
+        font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+        background: #f7f9fc;
+        color: #222;
+        line-height: 1.6;
+    }
+
+    /* HEADER */
+    .header {
+        width: 100%;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    .header header h2 {
+        font-size: 2.2rem;
+        color: #004aad;
+        letter-spacing: 1px;
+        margin: 1rem 0;
+    }
+    .links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 2rem;
+        flex-wrap: wrap;
+    }
+    .navigation a, .login-register a {
+        margin-right: 1.5rem;
+        font-weight: 500;
+        color: #004aad;
+        transition: color 0.2s;
+    }
+    .navigation a:hover, .login-register a:hover {
+        color: #0a58ca;
+    }
+    .login-register a {
+        margin-right: 0.5rem;
+    }
+    .buttons {
+        display: none;
         position: absolute;
-        top: 50px;
-        left: auto;
-        text-align: center;
-        background-color: lightblue;
-       width: 100%;
+        right: 1rem;
+        top: 1.2rem;
     }
-    .show a{
-        display: block;
-       /*  border: 2px solid red; */
-        font-size: 1.4em;
-        margin-bottom: 12px;
+    .buttons img {
+        width: 32px;
+        margin-left: 8px;
+        cursor: pointer;
     }
-    .show .d-block{
-        display: block;
-        /* border: 2px solid black; */
-        float: none;
-    }
-     /* Styles for header section end */
-    a{
-        text-decoration: none;
-        font-size: 1.3em;
-        margin-right: 2rem;
-    }
-</style>
-</head>
 
+    /* Swiper */
+    .swiper {
+        margin: 1rem auto;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        max-width: 900px;
+        background: #fff;
+    }
+    .swiper-slide img {
+        border-radius: 16px;
+        object-fit: cover;
+        height: 320px;
+    }
+
+    /* Search box */
+    .search-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 1.5rem 0;
+    }
+    .search-box {
+        width: 90%;
+        max-width: 500px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+    }
+    .search-form {
+        width: 100%;
+        display: flex;
+    }
+    .search-form input[type="search"] {
+        flex: 1;
+        padding: 0.7rem 1rem;
+        border: 1px solid #d3d3d3;
+        border-radius: 8px 0 0 8px;
+        font-size: 1rem;
+        outline: none;
+    }
+    .search-form input[type="submit"] {
+        padding: 0.7rem 1.2rem;
+        border: none;
+        background: #004aad;
+        color: #fff;
+        font-weight: 600;
+        border-radius: 0 8px 8px 0;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .search-form input[type="submit"]:hover {
+        background: #0a58ca;
+    }
+
+    /* Category section */
+    .category-container {
+        margin: 2.5rem auto;
+        max-width: 1100px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        padding: 2rem;
+    }
+    .category-container h2 {
+        margin-bottom: 1.5rem;
+        color: #004aad;
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+    .category-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1.8rem;
+    }
+    .category-box {
+        text-align: center;
+        background: #f0f4fa;
+        border-radius: 12px;
+        padding: 1rem 0.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        transition: box-shadow 0.2s;
+    }
+    .category-box:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .category-box img {
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+        margin-bottom: 0.7rem;
+        background: #cce3fa;
+        object-fit: cover;
+    }
+    .category-box h3 a {
+        color: #222;
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-decoration: none;
+    }
+    #category-loadmore-btn {
+        display: block;
+        margin: 2.2rem auto 0 auto;
+        padding: 0.6rem 2rem;
+        font-size: 1rem;
+        background: #004aad;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background 0.2s;
+    }
+    #category-loadmore-btn:hover {
+        background: #0a58ca;
+    }
+
+    /* Aside section */
+    .aside-card-container {
+        margin: 2.5rem auto;
+        max-width: 900px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        padding: 2rem;
+    }
+    .aside-card-container h2 {
+        color: #004aad;
+        margin-bottom: 1.2rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+    .aside-card {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+    .aside-content a {
+        text-decoration: none;
+        color: #222;
+        background: #eaf2fb;
+        padding: 0.7rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        display: block;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        transition: background 0.2s;
+    }
+    .aside-content a:hover {
+        background: #cce3fa;
+    }
+
+    /* Recently added books */
+    .recently-added-books {
+        margin: 2.5rem auto;
+        max-width: 1100px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        padding: 2rem;
+    }
+    .recently-added-books h3 {
+        margin-bottom: 1.5rem;
+        color: #004aad;
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+    .books-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1.2rem;
+    }
+    .recently-added-books-box {
+        text-align: center;
+        background: #f0f4fa;
+        border-radius: 12px;
+        padding: 0.8rem 0.3rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        transition: box-shadow 0.2s;
+    }
+    .recently-added-books-box:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .recently-added-books-box img {
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        background: #cce3fa;
+        object-fit: cover;
+        margin-bottom: 0.6rem;
+    }
+    .recently-added-books-box p {
+        font-size: 0.98rem;
+        color: #222;
+        font-weight: 500;
+    }
+    #load-more-books {
+        display: block;
+        margin: 2rem auto 0 auto;
+        padding: 0.6rem 2rem;
+        font-size: 1rem;
+        background: #004aad;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background 0.2s;
+    }
+    #load-more-books:hover {
+        background: #0a58ca;
+    }
+
+    /* Footer */
+    .footer {
+        width: 100%;
+        background: #004aad;
+        color: #fff;
+        margin-top: 2rem;
+        padding: 2rem 0 1rem 0;
+        border-radius: 24px 24px 0 0;
+    }
+    .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        max-width: 1100px;
+        margin: 0 auto;
+        gap: 2rem;
+    }
+    .footer-content > div {
+        min-width: 180px;
+    }
+    .footer .f-heading {
+        font-size: 1.1rem;
+        margin-bottom: 0.7rem;
+        color: #fff;
+        font-weight: 600;
+    }
+    .footer a {
+        color: #cce3fa;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        transition: color 0.2s;
+    }
+    .footer a:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
+    .footer p {
+        text-align: center;
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+
+    /* Responsive nav for mobile */
+    @media (max-width: 850px) {
+        .links {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 1rem;
+        }
+        .buttons {
+            display: block;
+        }
+        .navigation, .login-register {
+            display: none;
+        }
+        .links.active .navigation,
+        .links.active .login-register {
+            display: block;
+            width: 100%;
+            margin: 0.5rem 0;
+        }
+        .navigation a, .login-register a {
+            margin-right: 0;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .category-cards, .books-container, .aside-card {
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        }
+        .category-container, .recently-added-books, .aside-card-container {
+            padding: 1rem;
+        }
+        .footer-content {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    @media (max-width: 500px) {
+        .category-cards, .books-container, .aside-card {
+            grid-template-columns: 1fr;
+        }
+        .header header h2 {
+            font-size: 1.4rem;
+        }
+        .footer-content {
+            gap: 1rem;
+            padding: 0 1rem;
+        }
+        .footer {
+            padding: 1rem 0;
+        }
+    }
+    </style>
+</head>
 <body class="light-mode">
     <!-- header section start -->
-<div class="header " >
-    <header>
-        <a href="index.html"><h2>National Library</h2></a>
-    </header>
-    <div class="links "><!--  show d-block
-        d-block-->
-        <div class= "  navigation">
-            <a href="books.html">Books</a>
-            <a href="articles.html">Articles</a>
+    <div class="header">
+        <header>
+            <a href="index.html"><h2>National Library</h2></a>
+        </header>
+        <div class="links">
+            <div class="navigation">
+                <a href="books.html">Books</a>
+                <a href="articles.html">Articles</a>
+            </div>
+            <div class="login-register">
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </div>
         </div>
-        <div class="login-register ">
-            <a href="login.html">Login</a>
-            <a href="register.html">Register</a>
-            
+        <div class="buttons">
+            <img class="show-menu" src="bars-solid.svg" alt="Show menu">
+            <img class="hide-menu" src="xmark-solid.svg" alt="Hide menu" style="display:none;">
         </div>
     </div>
-    <div class="buttons" >
-        <img class="show-menu" src="bars-solid.svg" alt="">
-        <img class="hide-menu" src="xmark-solid.svg" alt="">
-    </div>
-    
-</div>
     <!-- header section end -->
 
-  
-
-
-
-
-
-<div class="swiper mySwiper">
-
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="homePage-slider-images/1.jpg" alt="" style="width: 100%;/*  height: 550px;  */" ></div>
-      <div class="swiper-slide"><img src="homePage-slider-images/2.jpg" alt="" style="width: 100%;  /* height: 550px; */ "></div>
-       <div class="swiper-slide"><img src="homePage-slider-images/3.jpg" alt="" style="width: 100%;   /*  height: 550px */; "></div> 
-     
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
-
-   
-
-
-
-    <!-- SEARCH BOX SECTION  START-->
-    <div class="search-container">
-        <div class="search-box">
-            <form action="search_books.php" class="search-form" method="post">
-                <input type="search" name="search" placeholder="Search book name or author">
-                 <input type="submit" name="search-submit" id="search-submit" value="Search">  
-            </form>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="homePage-slider-images/1.jpg" alt="Library Image 1"></div>
+            <div class="swiper-slide"><img src="homePage-slider-images/2.jpg" alt="Library Image 2"></div>
+            <div class="swiper-slide"><img src="homePage-slider-images/3.jpg" alt="Library Image 3"></div>
         </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+        <!-- SEARCH BOX SECTION START -->
+        <div class="search-container">
+            <div class="search-box">
+                <form action="search_books.php" class="search-form" method="post">
+                    <input type="search" name="search" placeholder="Search book name or author">
+                    <input type="submit" name="search-submit" id="search-submit" value="Search">
+                </form>
+            </div>
+        </div>
+        <!-- SEARCH BOX SECTION END -->
     </div>
 
-    <!-- SEARCH BOX SECTION  END-->
-
-</div>
-
-<section class="content-container" >
-
-     
-        
-    <!--  BOOK CATEGORIES SECTION START -->
-
-    <section class="category-container">
-        <h2>Book Categories</h2>
-        <div class="category-cards">
-            
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
+    <section class="content-container">
+        <!-- BOOK CATEGORIES SECTION START -->
+        <section class="category-container">
+            <h2>Book Categories</h2>
+            <div class="category-cards">
+                <!-- Example category boxes; replace src and titles as needed -->
+                <div class="category-box">
+                    <a href=""><img src="images/category1.png" alt="Category"></a>
+                    <h3><a href="">History</a></h3>
+                </div>
+                <div class="category-box">
+                    <a href=""><img src="images/category2.png" alt="Category"></a>
+                    <h3><a href="">Science</a></h3>
+                </div>
+                <div class="category-box">
+                    <a href=""><img src="images/category3.png" alt="Category"></a>
+                    <h3><a href="">Fiction</a></h3>
+                </div>
+                <div class="category-box">
+                    <a href=""><img src="images/category4.png" alt="Category"></a>
+                    <h3><a href="">Technology</a></h3>
+                </div>
+                <div class="category-box">
+                    <a href=""><img src="images/category5.png" alt="Category"></a>
+                    <h3><a href="">Biography</a></h3>
+                </div>
+                <div class="category-box">
+                    <a href=""><img src="images/category6.png" alt="Category"></a>
+                    <h3><a href="">Children</a></h3>
+                </div>
+                <!-- Add more categories as needed -->
             </div>
+            <button id="category-loadmore-btn">Load More</button>
+        </section>
+        <!-- BOOK CATEGORIES SECTION END -->
 
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
+        <!-- ARTICLES CATEGORIES IN ASIDE SECTION START -->
+        <aside class="aside-card-container">
+            <h2>Articles Categories</h2>
+            <div class="aside-card">
+                <div class="aside-content">
+                    <a href=""><h4> Literature </h4></a>
+                </div>
+                <div class="aside-content">
+                    <a href=""><h4> Science & Research </h4></a>
+                </div>
+                <div class="aside-content">
+                    <a href=""><h4> Technology Trends </h4></a>
+                </div>
+                <div class="aside-content">
+                    <a href=""><h4> World News </h4></a>
+                </div>
             </div>
+        </aside>
+        <!-- ARTICLES CATEGORIES IN ASIDE SECTION END -->
+    </section>
 
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
+    <!-- SECTION FOR RECENTLY ADDED BOOKS START -->
+    <section class="recently-added-books">
+        <h3>Recently added books</h3>
+        <div class="books-container">
+            <div class="recently-added-books-box">
+                <a href=""><img src="images/book1.jpg" alt="Book"></a>
+                <a href=""><p>Book Title</p></a>
             </div>
-
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
+            <div class="recently-added-books-box">
+                <a href=""><img src="images/book2.jpg" alt="Book"></a>
+                <a href=""><p>Book Title</p></a>
             </div>
+            <!-- Add more book boxes as needed -->
+        </div>
+        <button id="load-more-books">Load More</button>
+    </section>
+    <!-- SECTION FOR RECENTLY ADDED BOOKS END -->
 
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="about-us">
+                <h4 class="f-heading">About Us</h4>
+                <p>National Library is a comprehensive digital library that offers a wide range of free and premium ebooks. Our extensive database comprises books, magazines, and other digital documents.</p>
+                <p>Our platform is designed to enable seamless navigation, search, and discovery of books. You can easily browse our collection by categories, read online, or opt to have the books printed.</p>
+                <hr>
             </div>
-
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
+            <div class="user-accounts mrg-left">
+                <h4 class="f-heading">User Accounts</h4>
+                <a href="adminDashboard/index.php">Dashboard</a>
+                <a href="login.php">Login</a>
+                <a href="register.php">Register</a>
             </div>
-
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
+            <div class="quick-links mrg-left">
+                <h4 class="f-heading">Quick Links</h4>
+                <a href="#">Home</a>
+                <a href="#">Books</a>
+                <a href="#">Articles</a>
             </div>
-
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
-            </div>
-
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
-            </div>
-
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
-            </div>
-
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
-            </div>
-
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
-            </div>
-
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
-            </div>
-
-            <div class="category-box">
-                <a href=""> <img src=" ?>" alt=""></a> 
-                <h3><a href="">Book Category Title</a></h3>
-            </div>
-            
         </div>
-        <button id="category-loadmore-btn">Load More</button>
-    </section>   
-
-    <!-- BOOK CATEGORIES SECTION   END-->
-    
-    <!-- ARTICLES CATEGORIES IN ASIDE SECTION START -->
-    <aside class="aside-card-container">
-
-        <h2>Articles Categories</h2>
-        <div class="aside-card">
-
-            <div class="aside-content">
-                <a href=""><h4> Article Category Goes here </h4></a>
-            </div>
-
-            <div class="aside-content">
-                <a href=""><h4> Article Category Goes here </h4></a>
-            </div>
-
-            <div class="aside-content">
-                <a href=""><h4> Article Category Goes here  Article Category Goes here  Article Category Goes here </h4></a>
-            </div>
-
-            <div class="aside-content">
-                <a href=""><h4> Article Category Goes here </h4></a>
-            </div>
-
-        </div>
-       
-       
-    </aside>
-
-
-    <!-- ARTICLES  CATEGORIES IN ASIDE SECTION END -->
-
-    
-
-</section>    
-
-
-<!-- SECTION FOR RECENTLY ADDED BOOKS START -->
-<section class="recently-added-books">
-    <h3>Recently added books</h3>
-    <div class="books-container">
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div> 
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div> 
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-
-        <div class="recently-added-books-box">
-            <a href=""><img src="" alt=""></a> 
-            <a href=""><p> Book Title </p></a> 
-        </div>
-                    
-            
-    </div>
-    <button id="load-more-books">Load More</button>
-</section>
-
-<!-- SECTION FOR RECENTLY ADDED BOOKS END -->
-
-
-<!-- CONTENT SECTION START -->
-
-
-
-
-<footer class="footer">
-    <div class="footer-content">
-        <div class="about-us">
-            <h4 class="f-heading">About Us</h4>
-            <p>National Library is a comprehensive digital library that offers a wide range of free and premium ebooks. Our extensive database comprises books, magazines, and other digital documents, giving you access to thousands of literary works.</p>
-            
-            <p>Our platform is designed to enable seamless navigation, search, and discovery of books. You can easily browse our collection by categories, read online, or opt to have the books printed or downloaded onto your device. Our user-friendly interface ensures a hassle-free experience for our patrons.</p>
-            <hr>
-        </div>
-
-        
-        <div class="user-accounts mrg-left" >
-            <h4 class="f-heading">User Accounts</h4>
-            
-            <a href="adminDashboard/index.php">Dashboard</a>
-            <a href="login.php">Login</a>
-            <a href="register.php">Register</a>
-        </div>
-        <div class="quick-links mrg-left" >
-            <h4 class="f-heading">Quick Links</h4>
-            <a >Home</a>
-            <a >Books</a>
-            <a >Articles</a>
-            
-
-        </div>
-    </div>
-    <p>&copy; 2024 NationaLibrary.com</p>
-     <p style="text-decoration: none; margin-top: -1rem;">Developed by: <a href="https://twitter.com/Naikmal_web_sol">Najibullah Naikmal</a></p>
-
-</footer>
-<!-- LINK TO SWIPER.COM JS STRAT -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<!-- LINK TO SWIPER.COM JS END -->
-<script src="main2.js"></script>
-  
+        <p>&copy; 2024 NationaLibrary.com</p>
+        <p style="margin-top:-1rem;">Developed by: <a href="https://twitter.com/Naikmal_web_sol">Najibullah Naikmal</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="main2.js"></script>
+    <script>
+    // Responsive navigation for mobile
+    document.querySelector('.show-menu').onclick = function() {
+        document.querySelector('.links').classList.add('active');
+        document.querySelector('.show-menu').style.display = 'none';
+        document.querySelector('.hide-menu').style.display = 'inline-block';
+    };
+    document.querySelector('.hide-menu').onclick = function() {
+        document.querySelector('.links').classList.remove('active');
+        document.querySelector('.show-menu').style.display = 'inline-block';
+        document.querySelector('.hide-menu').style.display = 'none';
+    };
+    </script>
 </body>
 </html>
