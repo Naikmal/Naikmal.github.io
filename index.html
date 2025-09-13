@@ -1,540 +1,1023 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Library - Digital Knowledge Hub</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-    /* Base resets */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    body {
-        font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-        background: #f7f9fc;
-        color: #222;
-        line-height: 1.6;
-    }
-
-    /* HEADER */
-    .header {
-        width: 100%;
-        background: #fff;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        position: sticky;
-        top: 0;
-        z-index: 10;
-    }
-    .header header h2 {
-        font-size: 2.2rem;
-        color: #004aad;
-        letter-spacing: 1px;
-        margin: 1rem 0;
-    }
-    .links {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5rem 2rem;
-        flex-wrap: wrap;
-    }
-    .navigation a, .login-register a {
-        margin-right: 1.5rem;
-        font-weight: 500;
-        color: #004aad;
-        transition: color 0.2s;
-    }
-    .navigation a:hover, .login-register a:hover {
-        color: #0a58ca;
-    }
-    .login-register a {
-        margin-right: 0.5rem;
-    }
-    .buttons {
-        display: none;
-        position: absolute;
-        right: 1rem;
-        top: 1.2rem;
-    }
-    .buttons img {
-        width: 32px;
-        margin-left: 8px;
-        cursor: pointer;
-    }
-
-    /* Swiper */
-    .swiper {
-        margin: 1rem auto;
-        border-radius: 16px;
-        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-        max-width: 900px;
-        background: #fff;
-    }
-    .swiper-slide img {
-        border-radius: 16px;
-        object-fit: cover;
-        height: 320px;
-    }
-
-    /* Search box */
-    .search-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin: 1.5rem 0;
-    }
-    .search-box {
-        width: 90%;
-        max-width: 500px;
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-    }
-    .search-form {
-        width: 100%;
-        display: flex;
-    }
-    .search-form input[type="search"] {
-        flex: 1;
-        padding: 0.7rem 1rem;
-        border: 1px solid #d3d3d3;
-        border-radius: 8px 0 0 8px;
-        font-size: 1rem;
-        outline: none;
-    }
-    .search-form input[type="submit"] {
-        padding: 0.7rem 1.2rem;
-        border: none;
-        background: #004aad;
-        color: #fff;
-        font-weight: 600;
-        border-radius: 0 8px 8px 0;
-        cursor: pointer;
-        transition: background 0.2s;
-    }
-    .search-form input[type="submit"]:hover {
-        background: #0a58ca;
-    }
-
-    /* Category section */
-    .category-container {
-        margin: 2.5rem auto;
-        max-width: 1100px;
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        padding: 2rem;
-    }
-    .category-container h2 {
-        margin-bottom: 1.5rem;
-        color: #004aad;
-        font-size: 1.6rem;
-        font-weight: 600;
-    }
-    .category-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 1.8rem;
-    }
-    .category-box {
-        text-align: center;
-        background: #f0f4fa;
-        border-radius: 12px;
-        padding: 1rem 0.5rem;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-        transition: box-shadow 0.2s;
-    }
-    .category-box:hover {
-        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    }
-    .category-box img {
-        width: 60px;
-        height: 60px;
-        border-radius: 8px;
-        margin-bottom: 0.7rem;
-        background: #cce3fa;
-        object-fit: cover;
-    }
-    .category-box h3 a {
-        color: #222;
-        font-size: 1.1rem;
-        font-weight: 500;
-        text-decoration: none;
-    }
-    #category-loadmore-btn {
-        display: block;
-        margin: 2.2rem auto 0 auto;
-        padding: 0.6rem 2rem;
-        font-size: 1rem;
-        background: #004aad;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 500;
-        transition: background 0.2s;
-    }
-    #category-loadmore-btn:hover {
-        background: #0a58ca;
-    }
-
-    /* Aside section */
-    .aside-card-container {
-        margin: 2.5rem auto;
-        max-width: 900px;
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        padding: 2rem;
-    }
-    .aside-card-container h2 {
-        color: #004aad;
-        margin-bottom: 1.2rem;
-        font-size: 1.3rem;
-        font-weight: 600;
-    }
-    .aside-card {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 1rem;
-    }
-    .aside-content a {
-        text-decoration: none;
-        color: #222;
-        background: #eaf2fb;
-        padding: 0.7rem;
-        border-radius: 8px;
-        font-size: 1rem;
-        display: block;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.02);
-        transition: background 0.2s;
-    }
-    .aside-content a:hover {
-        background: #cce3fa;
-    }
-
-    /* Recently added books */
-    .recently-added-books {
-        margin: 2.5rem auto;
-        max-width: 1100px;
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        padding: 2rem;
-    }
-    .recently-added-books h3 {
-        margin-bottom: 1.5rem;
-        color: #004aad;
-        font-size: 1.3rem;
-        font-weight: 600;
-    }
-    .books-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 1.2rem;
-    }
-    .recently-added-books-box {
-        text-align: center;
-        background: #f0f4fa;
-        border-radius: 12px;
-        padding: 0.8rem 0.3rem;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-        transition: box-shadow 0.2s;
-    }
-    .recently-added-books-box:hover {
-        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    }
-    .recently-added-books-box img {
-        width: 50px;
-        height: 50px;
-        border-radius: 8px;
-        background: #cce3fa;
-        object-fit: cover;
-        margin-bottom: 0.6rem;
-    }
-    .recently-added-books-box p {
-        font-size: 0.98rem;
-        color: #222;
-        font-weight: 500;
-    }
-    #load-more-books {
-        display: block;
-        margin: 2rem auto 0 auto;
-        padding: 0.6rem 2rem;
-        font-size: 1rem;
-        background: #004aad;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 500;
-        transition: background 0.2s;
-    }
-    #load-more-books:hover {
-        background: #0a58ca;
-    }
-
-    /* Footer */
-    .footer {
-        width: 100%;
-        background: #004aad;
-        color: #fff;
-        margin-top: 2rem;
-        padding: 2rem 0 1rem 0;
-        border-radius: 24px 24px 0 0;
-    }
-    .footer-content {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        max-width: 1100px;
-        margin: 0 auto;
-        gap: 2rem;
-    }
-    .footer-content > div {
-        min-width: 180px;
-    }
-    .footer .f-heading {
-        font-size: 1.1rem;
-        margin-bottom: 0.7rem;
-        color: #fff;
-        font-weight: 600;
-    }
-    .footer a {
-        color: #cce3fa;
-        text-decoration: none;
-        display: block;
-        margin-bottom: 0.5rem;
-        font-size: 1rem;
-        transition: color 0.2s;
-    }
-    .footer a:hover {
-        color: #fff;
-        text-decoration: underline;
-    }
-    .footer p {
-        text-align: center;
-        font-size: 1rem;
-        margin-top: 1rem;
-    }
-
-    /* Responsive nav for mobile */
-    @media (max-width: 850px) {
-        .links {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 1rem;
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #f472b6;
+            --accent-color: #06b6d4;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --gradient-2: linear-gradient(135deg, #f472b6 0%, #fb7185 100%);
+            --gradient-3: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-accent: #f1f5f9;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .buttons {
-            display: block;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .navigation, .login-register {
-            display: none;
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        .links.active .navigation,
-        .links.active .login-register {
-            display: block;
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
             width: 100%;
-            margin: 0.5rem 0;
         }
-        .navigation a, .login-register a {
-            margin-right: 0;
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="1000,100 1000,0 0,100"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn-hero {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Search Section */
+        .search-section {
+            padding: 4rem 0;
+            background: var(--bg-primary);
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .search-box {
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .search-box:focus-within {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .search-box input[type="search"] {
+            flex: 1;
+            padding: 1.2rem 1.5rem;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            background: transparent;
+        }
+
+        .search-box button {
+            padding: 1.2rem 2rem;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .search-box button:hover {
+            background: var(--gradient-2);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 4rem 0;
+            background: var(--bg-accent);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 6rem 0;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0.1;
+            transition: var(--transition);
+        }
+
+        .category-card:hover::before {
+            left: 0;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient-1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .category-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .category-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .category-card a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Featured Books Section */
+        .featured-section {
+            padding: 6rem 0;
+            background: var(--bg-accent);
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .book-image {
+            height: 200px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .book-content {
+            padding: 1.5rem;
+        }
+
+        .book-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .book-author {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .book-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #fbbf24;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 6rem 0;
+            background: var(--gradient-1);
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
             display: block;
             margin-bottom: 0.8rem;
+            transition: var(--transition);
         }
-    }
 
-    @media (max-width: 700px) {
-        .category-cards, .books-container, .aside-card {
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        .footer-section a:hover {
+            color: white;
+            transform: translateX(5px);
         }
-        .category-container, .recently-added-books, .aside-card-container {
-            padding: 1rem;
-        }
-        .footer-content {
-            flex-direction: column;
-            align-items: center;
-        }
-    }
-    @media (max-width: 500px) {
-        .category-cards, .books-container, .aside-card {
-            grid-template-columns: 1fr;
-        }
-        .header header h2 {
-            font-size: 1.4rem;
-        }
-        .footer-content {
+
+        .social-links {
+            display: flex;
             gap: 1rem;
-            padding: 0 1rem;
+            margin-top: 1rem;
         }
-        .footer {
-            padding: 1rem 0;
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
         }
-    }
+
+        .social-links a:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            margin-top: 2rem;
+            color: #9ca3af;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .categories-grid,
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 6rem 0 4rem;
+            }
+
+            .section-container {
+                padding: 0 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
-<body class="light-mode">
-    <!-- header section start -->
-    <div class="header">
-        <header>
-            <a href="index.html"><h2>National Library</h2></a>
-        </header>
-        <div class="links">
-            <div class="navigation">
-                <a href="books.html">Books</a>
-                <a href="articles.html">Articles</a>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">📚 National Library</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#books">Books</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-outline">Login</a>
+                <a href="#" class="btn btn-primary">Register</a>
             </div>
-            <div class="login-register">
-                <a href="login.html">Login</a>
-                <a href="register.html">Register</a>
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </div>
-        <div class="buttons">
-            <img class="show-menu" src="bars-solid.svg" alt="Show menu">
-            <img class="hide-menu" src="xmark-solid.svg" alt="Hide menu" style="display:none;">
-        </div>
-    </div>
-    <!-- header section end -->
+        </nav>
+    </header>
 
-    <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="homePage-slider-images/1.jpg" alt="Library Image 1"></div>
-            <div class="swiper-slide"><img src="homePage-slider-images/2.jpg" alt="Library Image 2"></div>
-            <div class="swiper-slide"><img src="homePage-slider-images/3.jpg" alt="Library Image 3"></div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Discover Knowledge</h1>
+            <p>Access thousands of books, articles, and digital resources from our comprehensive digital library</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary btn-hero">Explore Books</a>
+                <a href="#" class="btn btn-outline btn-hero">Learn More</a>
+            </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-        <!-- SEARCH BOX SECTION START -->
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
         <div class="search-container">
-            <div class="search-box">
-                <form action="search_books.php" class="search-form" method="post">
-                    <input type="search" name="search" placeholder="Search book name or author">
-                    <input type="submit" name="search-submit" id="search-submit" value="Search">
-                </form>
-            </div>
+            <form class="search-box" action="search_books.php" method="post">
+                <input type="search" name="search" placeholder="Search for books, authors, or topics...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
         </div>
-        <!-- SEARCH BOX SECTION END -->
-    </div>
-
-    <section class="content-container">
-        <!-- BOOK CATEGORIES SECTION START -->
-        <section class="category-container">
-            <h2>Book Categories</h2>
-            <div class="category-cards">
-                <!-- Example category boxes; replace src and titles as needed -->
-                <div class="category-box">
-                    <a href=""><img src="images/category1.png" alt="Category"></a>
-                    <h3><a href="">History</a></h3>
-                </div>
-                <div class="category-box">
-                    <a href=""><img src="images/category2.png" alt="Category"></a>
-                    <h3><a href="">Science</a></h3>
-                </div>
-                <div class="category-box">
-                    <a href=""><img src="images/category3.png" alt="Category"></a>
-                    <h3><a href="">Fiction</a></h3>
-                </div>
-                <div class="category-box">
-                    <a href=""><img src="images/category4.png" alt="Category"></a>
-                    <h3><a href="">Technology</a></h3>
-                </div>
-                <div class="category-box">
-                    <a href=""><img src="images/category5.png" alt="Category"></a>
-                    <h3><a href="">Biography</a></h3>
-                </div>
-                <div class="category-box">
-                    <a href=""><img src="images/category6.png" alt="Category"></a>
-                    <h3><a href="">Children</a></h3>
-                </div>
-                <!-- Add more categories as needed -->
-            </div>
-            <button id="category-loadmore-btn">Load More</button>
-        </section>
-        <!-- BOOK CATEGORIES SECTION END -->
-
-        <!-- ARTICLES CATEGORIES IN ASIDE SECTION START -->
-        <aside class="aside-card-container">
-            <h2>Articles Categories</h2>
-            <div class="aside-card">
-                <div class="aside-content">
-                    <a href=""><h4> Literature </h4></a>
-                </div>
-                <div class="aside-content">
-                    <a href=""><h4> Science & Research </h4></a>
-                </div>
-                <div class="aside-content">
-                    <a href=""><h4> Technology Trends </h4></a>
-                </div>
-                <div class="aside-content">
-                    <a href=""><h4> World News </h4></a>
-                </div>
-            </div>
-        </aside>
-        <!-- ARTICLES CATEGORIES IN ASIDE SECTION END -->
     </section>
 
-    <!-- SECTION FOR RECENTLY ADDED BOOKS START -->
-    <section class="recently-added-books">
-        <h3>Recently added books</h3>
-        <div class="books-container">
-            <div class="recently-added-books-box">
-                <a href=""><img src="images/book1.jpg" alt="Book"></a>
-                <a href=""><p>Book Title</p></a>
+    <!-- Stats Section -->
+    <section class="stats-section scroll-reveal">
+        <div class="stats-container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Books Available</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1M+</div>
+                    <div class="stat-label">Happy Readers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">New Articles</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Online Access</div>
+                </div>
             </div>
-            <div class="recently-added-books-box">
-                <a href=""><img src="images/book2.jpg" alt="Book"></a>
-                <a href=""><p>Book Title</p></a>
-            </div>
-            <!-- Add more book boxes as needed -->
         </div>
-        <button id="load-more-books">Load More</button>
     </section>
-    <!-- SECTION FOR RECENTLY ADDED BOOKS END -->
 
+    <!-- Categories Section -->
+    <section class="categories-section scroll-reveal" id="books">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Explore Categories</h2>
+                <p>Discover books across various genres and subjects</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">📚</div>
+                    <h3>Literature</h3>
+                    <p>Classic and contemporary literature from around the world</p>
+                    <a href="#">Explore →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🔬</div>
+                    <h3>Science</h3>
+                    <p>Latest research and discoveries in various scientific fields</p>
+                    <a href="#">Explore →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">💻</div>
+                    <h3>Technology</h3>
+                    <p>Programming, AI, and cutting-edge technology resources</p>
+                    <a href="#">Explore →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🏛️</div>
+                    <h3>History</h3>
+                    <p>Historical documents and accounts from different eras</p>
+                    <a href="#">Explore →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎨</div>
+                    <h3>Arts</h3>
+                    <p>Visual arts, music, and creative expression resources</p>
+                    <a href="#">Explore →</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">👶</div>
+                    <h3>Children</h3>
+                    <p>Educational and entertaining books for young readers</p>
+                    <a href="#">Explore →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Books Section -->
+    <section class="featured-section scroll-reveal">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Featured Books</h2>
+                <p>Handpicked selections from our vast collection</p>
+            </div>
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-image">📖</div>
+                    <div class="book-content">
+                        <div class="book-title">The Art of Programming</div>
+                        <div class="book-author">by John Doe</div>
+                        <div class="book-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card">
+                    <div class="book-image">🌟</div>
+                    <div class="book-content">
+                        <div class="book-title">Modern Physics</div>
+                        <div class="book-author">by Jane Smith</div>
+                        <div class="book-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card">
+                    <div class="book-image">📚</div>
+                    <div class="book-content">
+                        <div class="book-title">World History</div>
+                        <div class="book-author">by Robert Johnson</div>
+                        <div class="book-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span>4.7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card">
+                    <div class="book-image">🎨</div>
+                    <div class="book-content">
+                        <div class="book-title">Digital Art Guide</div>
+                        <div class="book-author">by Maria Garcia</div>
+                        <div class="book-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span>4.6</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section scroll-reveal">
+        <div class="newsletter-content">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for the latest book recommendations and library updates</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="about-us">
-                <h4 class="f-heading">About Us</h4>
-                <p>National Library is a comprehensive digital library that offers a wide range of free and premium ebooks. Our extensive database comprises books, magazines, and other digital documents.</p>
-                <p>Our platform is designed to enable seamless navigation, search, and discovery of books. You can easily browse our collection by categories, read online, or opt to have the books printed.</p>
-                <hr>
+            <div class="footer-section">
+                <h4>About National Library</h4>
+                <p>National Library is a comprehensive digital library offering access to thousands of books, articles, and digital resources for learners worldwide.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
-            <div class="user-accounts mrg-left">
-                <h4 class="f-heading">User Accounts</h4>
-                <a href="adminDashboard/index.php">Dashboard</a>
-                <a href="login.php">Login</a>
-                <a href="register.php">Register</a>
-            </div>
-            <div class="quick-links mrg-left">
-                <h4 class="f-heading">Quick Links</h4>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
                 <a href="#">Home</a>
                 <a href="#">Books</a>
                 <a href="#">Articles</a>
+                <a href="#">Categories</a>
+                <a href="#">About Us</a>
+            </div>
+            <div class="footer-section">
+                <h4>Account</h4>
+                <a href="#">Login</a>
+                <a href="#">Register</a>
+                <a href="#">Dashboard</a>
+                <a href="#">My Books</a>
+                <a href="#">Settings</a>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <a href="#">Help Center</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">FAQ</a>
             </div>
         </div>
-        <p>&copy; 2024 NationaLibrary.com</p>
-        <p style="margin-top:-1rem;">Developed by: <a href="https://twitter.com/Naikmal_web_sol">Najibullah Naikmal</a></p>
+        <div class="footer-bottom">
+            <p>&copy; 2024 National Library. All rights reserved.</p>
+            <p>Developed by <a href="https://twitter.com/Naikmal_web_sol" style="color: #6366f1;">Najibullah Naikmal</a></p>
+        </div>
     </footer>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="main2.js"></script>
     <script>
-    // Responsive navigation for mobile
-    document.querySelector('.show-menu').onclick = function() {
-        document.querySelector('.links').classList.add('active');
-        document.querySelector('.show-menu').style.display = 'none';
-        document.querySelector('.hide-menu').style.display = 'inline-block';
-    };
-    document.querySelector('.hide-menu').onclick = function() {
-        document.querySelector('.links').classList.remove('active');
-        document.querySelector('.show-menu').style.display = 'inline-block';
-        document.querySelector('.hide-menu').style.display = 'none';
-    };
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Counter animation for stats
+        const animateCounters = () => {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/[^\d]/g, ''));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        if (counter.textContent.includes('K')) {
+                            counter.textContent = Math.floor(current / 1000) + 'K+';
+                        } else if (counter.textContent.includes('M')) {
+                            counter.textContent = Math.floor(current / 1000000) + 'M+';
+                        } else if (counter.textContent.includes('/')) {
+                            counter.textContent = '24/7';
+                        } else {
+                            counter.textContent = Math.floor(current) + '+';
+                        }
+                        requestAnimationFrame(updateCounter);
+                    }
+                };
+                updateCounter();
+            });
+        };
+
+        // Trigger counter animation when stats section is visible
+        const statsSection = document.querySelector('.stats-section');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
     </script>
 </body>
 </html>
